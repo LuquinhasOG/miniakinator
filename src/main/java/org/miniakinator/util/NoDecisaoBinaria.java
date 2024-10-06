@@ -11,6 +11,7 @@ public class NoDecisaoBinaria {
         this.informacao = informacao;
     }
     public NoDecisaoBinaria(String informacao, NoDecisaoBinaria pai, NoDecisaoBinaria filhoVerdadeiro, NoDecisaoBinaria filhoFalso) {
+        this.informacao = informacao;
         this.filhoVerdadeiro = filhoVerdadeiro;
         this.filhoFalso = filhoFalso;
         this.pai = pai;
@@ -46,5 +47,9 @@ public class NoDecisaoBinaria {
 
     public boolean isFolha() {
         return (filhoVerdadeiro == null) && (filhoFalso == null);
+    }
+
+    public NoDecisaoBinaria clone() {
+        return new NoDecisaoBinaria(getInformacao(), getPai(), getFilhoVerdadeiro(), getFilhoFalso());
     }
 }

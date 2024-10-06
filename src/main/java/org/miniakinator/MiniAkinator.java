@@ -11,13 +11,12 @@ public class MiniAkinator {
     boolean reiniciar = false;
     boolean continuar = true;
 
-    public MiniAkinator(String primeiraPergunta, String respostaAfirmativa, String respostaNegativa) {
-        NoDecisaoBinaria primeiraPergunta1 = new NoDecisaoBinaria(primeiraPergunta);
+    public MiniAkinator(String textoPergunta, String respostaAfirmativa, String respostaNegativa) {
+        NoDecisaoBinaria primeiraPergunta = new NoDecisaoBinaria(textoPergunta);
 
-        this.arvore = new ArvoreBinariaDecisao();
-        arvore.setRaiz(primeiraPergunta1);
-        primeiraPergunta1.set(new NoDecisaoBinaria(respostaAfirmativa), true);
-        primeiraPergunta1.set(new NoDecisaoBinaria(respostaNegativa), false);
+        primeiraPergunta.set(new NoDecisaoBinaria(respostaAfirmativa), true);
+        primeiraPergunta.set(new NoDecisaoBinaria(respostaNegativa), false);
+        this.arvore = new ArvoreBinariaDecisao(primeiraPergunta);
     }
 
     public void comecar() {
@@ -95,8 +94,11 @@ public class MiniAkinator {
         if (!retornaDecisao(scanner.nextLine()))
             continuar = false;
 
-        arvore.voltarTudo();
-        System.out.println("\n\nVamos recomeçar o jogo");
+        if (!continuar) {
+            System.out.println("\n\nVamos recomeçar o jogo");
+        }
+
         reiniciar = false;
+        arvore.voltarTudo();
     }
 }

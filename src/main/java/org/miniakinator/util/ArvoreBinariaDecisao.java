@@ -16,20 +16,13 @@ public class ArvoreBinariaDecisao {
         setRaiz(raiz);
     }
 
-    public ArvoreBinariaDecisao() {
-        this(null);
-    }
-
     public NoDecisaoBinaria getRaiz() {
         return this.raiz;
     }
 
     public void setRaiz(NoDecisaoBinaria n) {
         this.raiz = n;
-
-        if (this.atual == null) {
-            this.atual = raiz;
-        }
+        this.atual = raiz.clone();
     }
 
     public NoDecisaoBinaria get() {
@@ -55,9 +48,6 @@ public class ArvoreBinariaDecisao {
     }
 
     public void voltarTudo() {
-        // enquanto não for a raíz, retorne
-        while (!atual.equals(raiz)) {
-            this.voltar();
-        }
+        this.atual = this.raiz.clone();
     }
 }
