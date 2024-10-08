@@ -1,5 +1,7 @@
 package org.miniakinator;
 
+import org.miniakinator.jogo.MiniAkinator;
+
 public class Main {
     public static void main(String[] args) {
         // pode mudar a primeira pergunta e as respostas
